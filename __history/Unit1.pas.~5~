@@ -1,0 +1,83 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, frxSmartMemo,
+  frCoreClasses, frxClass, frxDBSet, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TForm1 = class(TForm)
+    ButtonEmitir: TButton;
+    frxReport1: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    FDQuery: TFDQuery;
+    procedure ButtonEmitirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit2;
+
+procedure TForm1.ButtonEmitirClick(Sender: TObject);
+begin
+   FDQuery.Close;
+   FDQuery.SQL.Clear;
+   FDQuery.SQL.Add('SELECT * FROM EMPRESA');
+   FDQuery.Open();
+   frxReport1.Variables['EMPRESA'] := FDQuery.FieldByName('RAZAO_SOCIAL').AsString;
+   frxReport1.Variables['ENDERECO'] := FDQuery.FieldByName('ENDERECO').AsString;
+   frxReport1.Variables['CIDADE'] := FDQuery.FieldByName('CIDADE').AsString;
+   frxReport1.Variables['CNPJ'] := FDQuery.FieldByName('CNPJ').AsString;
+   frxReport1.Variables['IE'] := FDQuery.FieldByName('IE').AsString;
+   frxReport1.Variables['EMAIL'] := FDQuery.FieldByName('EMAIL').AsString;
+   frxReport1.Variables['CEP'] := FDQuery.FieldByName('CEP').AsString;
+   frxReport1.Variables['TELEFONE1'] := FDQuery.FieldByName('TELEFONE1').AsString;
+   frxReport1.Variables['TELEFONE2'] := FDQuery.FieldByName('TELEFONE2').AsString;
+   FDQuery.Close;
+
+   FDQuery.SQL.Clear;
+   FDQuery.SQL.Add('SELECT * FROM ORCAMENTO LEFT JOIN USUARIO ON (ORCAMENTO.ID_USUARIO = USUARIO.ID) ');
+   FDQuery.Open();
+   frxReport1.Variables['NUMERO'] := FDQuery.FieldByName('ID').AsString;
+   frxReport1.Variables['EMISSAO'] := FDQuery.FieldByName('DATA_EMISSAO').AsString;
+   frxReport1.Variables['VENDEDOR'] := FDQuery.FieldByName('NOME').AsString;
+   frxReport1.Variables['CONTATO'] := '(65) 999755911';//CRIAR UMA COLONA NO USUARIO
+   frxReport1.Variables['EMAIL_VENDEDOR'] := FDQuery.FieldByName('EMAIL').AsString;
+   FDQuery.Close;
+
+   FDQuery.SQL.Clear;
+   FDQuery.SQL.Add('SELECT * FROM CLIENTE ');
+   FDQuery.Open();
+   frxReport1.Variables['CLIENTE_SUB'] := FDQuery.FieldByName('NOME').AsString;
+   frxReport1.Variables['EMAIL_SUB'] := FDQuery.FieldByName('EMAIL').AsString;
+   frxReport1.Variables['ENDERECO_SUB'] := FDQuery.FieldByName('ENDERECO').AsString;
+   frxReport1.Variables['CEP_SUB'] := FDQuery.FieldByName('CEP').AsString;;
+   frxReport1.Variables['TEL_FIXO_SUB'] := FDQuery.FieldByName('TELEFONE1').AsString;
+   frxReport1.Variables['TEL_FAX_SUB'] := FDQuery.FieldByName('TELEFONE2').AsString;
+   frxReport1.Variables['CELULAR_SUB'] := '(65) 999755911';//CRIAR COLUNA
+   frxReport1.Variables['RG_SUB'] := FDQuery.FieldByName('RG_IE').AsString;
+   frxReport1.Variables['CNPJ_CPF_SUB'] := FDQuery.FieldByName('CPF_CNPJ').AsString;
+   FDQuery.Close;
+
+   FDQuery.SQL.Clear;
+   FDQuery.SQL.Add('SELECT * FROM PRODUTO');
+   FDQuery.Open();
+   frxReport1.ShowReport();
+   FDQuery.Close;
+end;
+
+end.

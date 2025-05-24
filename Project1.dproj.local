@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/03/21 14:30:30.000.381,=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/05/19 20:22:41.027,=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/05/19 20:23:58.411,=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/05/19 20:34:07.362,C:\projetos\Delphi\ProjetoFastReport\Unit1.dfm=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2025/05/19 20:34:07.362,C:\projetos\Delphi\ProjetoFastReport\Unit1.pas=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/05/19 20:34:17.853,C:\projetos\Delphi\ProjetoFastReport\Unit2.pas=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2025/05/19 20:34:17.853,C:\projetos\Delphi\ProjetoFastReport\Unit2.dfm=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2025/05/22 20:40:42.691,C:\projetos\Delphi\ProjetoFastReport\Project1.dproj=C:\Users\João Gabriel\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
